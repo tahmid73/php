@@ -15,12 +15,12 @@
     <div>
         Add Items
         <form action="#" method="post">
-            <div>
-                <input type="text" name="name">
-                <input type="text" name="price">
-                <input type="text" name="buyingprice">
+            <div name="adding">
+                <input type="text" name="name"><br>
+                <input type="text" name="price"><br>
+                <input type="text" name="buyingprice"><br>
                 <input type="text" name="stock">
-                <input type="submit" onclick:>
+                <button type="submit" name="submit" >ADD</button>
             </div>
         </form>
     </div>
@@ -49,11 +49,26 @@
     else{
         echo "none";
     }
+
+    //insert
+    if(isset($_POST["submit"]))
+    {
+        $price=$_POST["price"];
+        $buyingPrice=$_POST["buyingprice"];
+        $stock=$_POST["stock"];
+        $name=$_POST["name"];
+        $sql="INSERT INTO products (productName,price,buyingPrice,stock) VALUES('$name','$price','$buyingPrice','$stock')";
+        if(mysqli_query($conn,$sql)){
+            echo "vorsi database e";
+        }
+        else{
+            echo "ki bal edi vai?";
+        }
+    }
+
     $conn->close();
 
-    function add(){
-        
-    }
+
 
     ?>
 </body>
